@@ -173,7 +173,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"roll",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -246,3 +246,11 @@ frame_progress = 0.280578
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_fjrip")
+
+[node name="Rolling_Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Rolling_Again_Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Rolling_Timer" to="." method="_on_rolling_timer_timeout"]
+[connection signal="timeout" from="Rolling_Again_Timer" to="." method="_on_rolling_again_timer_timeout"]
