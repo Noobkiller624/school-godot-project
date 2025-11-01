@@ -1,10 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://dk2usq05c1fwa"]
+[gd_scene load_steps=18 format=3 uid="uid://dk2usq05c1fwa"]
 
 [ext_resource type="PackedScene" uid="uid://qfrep8mdumdc" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://c58f01gr5xjb3" path="res://assets/sprites/world_tileset.png" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://c30064kd34bms" path="res://scenes/Flatform.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://b7gjdvh8k5wow" path="res://scenes/enemy_1.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bdw6b2xqn6tpq" path="res://scenes/bullet.tscn" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://cbahvydnsmxhk" path="res://scenes/enemy_2.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://iafodmenkohb" path="res://scenes/enemy_3.tscn" id="7_gee14"]
+[ext_resource type="PackedScene" uid="uid://bigo8s2m4sfth" path="res://scenes/arrow.tscn" id="8_0tnpc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("1_yqjtg")
@@ -314,5 +317,40 @@ position = Vector2(1535, -267)
 [node name="Bullet" parent="." instance=ExtResource("5_p57ef")]
 position = Vector2(-214, 247)
 
-[node name="Enemy-1" parent="." instance=ExtResource("5_iywne")]
+[node name="Arrow" parent="." instance=ExtResource("8_0tnpc")]
+position = Vector2(430, 374)
+
+[node name="Enemys" type="Node2D" parent="."]
+
+[node name="Enemy-1s" type="Node2D" parent="Enemys"]
+
+[node name="Enemy-1" parent="Enemys/Enemy-1s" instance=ExtResource("5_iywne")]
 position = Vector2(685, -24)
+
+[node name="Enemy-2" parent="Enemys/Enemy-1s" instance=ExtResource("5_iywne")]
+position = Vector2(730, -24)
+
+[node name="Enemy-3" parent="Enemys/Enemy-1s" instance=ExtResource("5_iywne")]
+position = Vector2(769, -24)
+
+[node name="Enemy-6" parent="Enemys/Enemy-1s" instance=ExtResource("5_iywne")]
+position = Vector2(644, -24)
+
+[node name="Enemy-2s" type="Node2D" parent="Enemys"]
+
+[node name="Enemy-2" parent="Enemys/Enemy-2s" instance=ExtResource("6_p57ef")]
+position = Vector2(930, -25)
+
+[node name="Enemy-4" parent="Enemys/Enemy-2s" instance=ExtResource("6_p57ef")]
+position = Vector2(853, -25)
+
+[node name="Enemy-5" parent="Enemys/Enemy-2s" instance=ExtResource("6_p57ef")]
+position = Vector2(1045, -25)
+
+[node name="Enemy-3s" type="Node2D" parent="Enemys"]
+
+[node name="Enemy-3" parent="Enemys/Enemy-3s" instance=ExtResource("7_gee14")]
+position = Vector2(810, -22)
+
+[node name="Enemy-4" parent="Enemys/Enemy-3s" instance=ExtResource("7_gee14")]
+position = Vector2(892, -23)

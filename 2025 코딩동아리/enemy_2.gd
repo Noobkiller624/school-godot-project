@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
-const SPEED = 60.0
+const SPEED = 100.0
+const ACCELERATE = 2.0
 var direction = -1
 var attacking = 0
 var can_move = 1
-var HP = 120 # 임의 체력. 언제든 수정 가능
+var HP = 300 # 임의 체력. 언제든 수정 가능
 var die = 0
 
 @onready var enemy_1: CharacterBody2D = $"."
@@ -18,19 +19,27 @@ func _process(delta: float) -> void:
 	
 	#움직임
 	if can_move == 1 :
-		if distance < 150 : #인식 범위
+		if distance < 200 : #인식 범위
 			if distance_y < 30 :
-				if Global.player_x - global_position.x > 0:
-					direction = 1
-					velocity.x = direction * SPEED
+				if distance < 80 : #인식 범위
+					if Global.player_x - global_position.x > 0:
+						direction = 1
+						velocity.x = direction * SPEED * ACCELERATE
+					else :
+						direction = -1
+						velocity.x = direction * SPEED * ACCELERATE
 				else :
-					direction = -1
-					velocity.x = direction * SPEED
+					if Global.player_x - global_position.x > 0:
+						direction = 1
+						velocity.x = direction * SPEED
+					else :
+						direction = -1
+						velocity.x = direction * SPEED
 		else :
 			velocity.x = 0
 			direction = 0
 		move_and_slide()
-		
+	
 	
 	#좌우 뒤집기
 	if direction > 0:
@@ -46,7 +55,10 @@ func _process(delta: float) -> void:
 		elif direction == 0 :
 			animated_sprite_2d.play("idle")
 		else :
-			animated_sprite_2d.play("run")
+			if distance < 80 :
+				animated_sprite_2d.play("run-lance")
+			else :
+				animated_sprite_2d.play("run")
 	else :
 		if die == 0 :
 			die = 1
