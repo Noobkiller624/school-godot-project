@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dk2usq05c1fwa"]
+[gd_scene load_steps=19 format=3 uid="uid://dk2usq05c1fwa"]
 
 [ext_resource type="PackedScene" uid="uid://qfrep8mdumdc" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://c58f01gr5xjb3" path="res://assets/sprites/world_tileset.png" id="1_yqjtg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cbahvydnsmxhk" path="res://scenes/enemy_2.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://iafodmenkohb" path="res://scenes/enemy_3.tscn" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://bigo8s2m4sfth" path="res://scenes/arrow.tscn" id="8_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://7els2aelavpv" path="res://scenes/enemy_4.tscn" id="9_0tnpc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("1_yqjtg")
@@ -354,3 +355,8 @@ position = Vector2(810, -22)
 
 [node name="Enemy-4" parent="Enemys/Enemy-3s" instance=ExtResource("7_gee14")]
 position = Vector2(892, -23)
+
+[node name="Enemy-4s" type="Node2D" parent="Enemys"]
+
+[node name="Enemy-4" parent="Enemys/Enemy-4s" instance=ExtResource("9_0tnpc")]
+position = Vector2(1409, -2)
