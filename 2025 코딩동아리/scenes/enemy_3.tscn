@@ -219,10 +219,8 @@ ArrowScene = ExtResource("2_uj3uc")
 position = Vector2(1.77636e-15, 0)
 scale = Vector2(1.28125, 1.25)
 sprite_frames = SubResource("SpriteFrames_khfop")
-animation = &"run"
+animation = &"attack-1"
 autoplay = "idle"
-frame = 4
-frame_progress = 0.73284
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 11)

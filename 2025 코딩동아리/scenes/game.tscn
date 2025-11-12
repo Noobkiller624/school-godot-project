@@ -332,7 +332,7 @@ position = Vector2(685, -24)
 position = Vector2(730, -24)
 
 [node name="Enemy-3" parent="Enemys/Enemy-1s" instance=ExtResource("5_iywne")]
-position = Vector2(769, -24)
+position = Vector2(577, -136)
 
 [node name="Enemy-6" parent="Enemys/Enemy-1s" instance=ExtResource("5_iywne")]
 position = Vector2(644, -24)
@@ -359,4 +359,7 @@ position = Vector2(892, -23)
 [node name="Enemy-4s" type="Node2D" parent="Enemys"]
 
 [node name="Enemy-4" parent="Enemys/Enemy-4s" instance=ExtResource("9_0tnpc")]
-position = Vector2(1409, -2)
+position = Vector2(1431, -4)
+
+[node name="Enemy-5" parent="Enemys/Enemy-4s" instance=ExtResource("9_0tnpc")]
+position = Vector2(1251, -100)

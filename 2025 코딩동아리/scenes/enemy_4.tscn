@@ -1,43 +1,52 @@
-[gd_scene load_steps=42 format=3 uid="uid://7els2aelavpv"]
+[gd_scene load_steps=45 format=3 uid="uid://7els2aelavpv"]
 
 [ext_resource type="Script" uid="uid://dfhn6s14twnfu" path="res://scenes/enemy_4.gd" id="1_0cinm"]
 [ext_resource type="Texture2D" uid="uid://io4ump6jxdj0" path="res://assets/sprites/MiniMage.png" id="1_021fx"]
+[ext_resource type="PackedScene" uid="uid://6y8o7uvcaby8" path="res://scenes/magic.tscn" id="2_lkpdo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eob20"]
 atlas = ExtResource("1_021fx")
-region = Rect2(0, 128, 32, 32)
+region = Rect2(0, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ou0w7"]
 atlas = ExtResource("1_021fx")
-region = Rect2(32, 128, 32, 32)
+region = Rect2(32, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdq1e"]
 atlas = ExtResource("1_021fx")
-region = Rect2(64, 128, 32, 32)
+region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qy6ml"]
 atlas = ExtResource("1_021fx")
-region = Rect2(96, 128, 32, 32)
+region = Rect2(96, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ahxrn"]
 atlas = ExtResource("1_021fx")
-region = Rect2(128, 128, 32, 32)
+region = Rect2(128, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3spnt"]
 atlas = ExtResource("1_021fx")
-region = Rect2(160, 128, 32, 32)
+region = Rect2(160, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x57ml"]
 atlas = ExtResource("1_021fx")
-region = Rect2(192, 128, 32, 32)
+region = Rect2(192, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jckb5"]
 atlas = ExtResource("1_021fx")
-region = Rect2(224, 128, 32, 32)
+region = Rect2(224, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_08ru6"]
 atlas = ExtResource("1_021fx")
-region = Rect2(256, 128, 32, 32)
+region = Rect2(256, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyk06"]
+atlas = ExtResource("1_021fx")
+region = Rect2(288, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8stx"]
+atlas = ExtResource("1_021fx")
+region = Rect2(320, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wxsm3"]
 atlas = ExtResource("1_021fx")
@@ -164,45 +173,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_fdq1e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fdq1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdq1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdq1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdq1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdq1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdq1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdq1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdq1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdq1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdq1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdq1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdq1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdq1e")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_qy6ml")
 }, {
 "duration": 1.0,
@@ -210,7 +180,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3spnt")
+}],
+"loop": true,
+"name": &"attack-1",
+"speed": 10.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x57ml")
 }, {
@@ -219,9 +194,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_08ru6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyk06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8stx")
 }],
 "loop": true,
-"name": &"attack-1",
+"name": &"attack-2",
 "speed": 10.0
 }, {
 "frames": [{
@@ -333,24 +314,34 @@ animations = [{
 size = Vector2(10, 18)
 
 [node name="Enemy-4" type="CharacterBody2D"]
+position = Vector2(0, 8)
+collision_layer = 2
 script = ExtResource("1_0cinm")
+magic_scene = ExtResource("2_lkpdo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -19.495)
 scale = Vector2(1.23438, 1.29688)
 sprite_frames = SubResource("SpriteFrames_eob20")
-animation = &"casting"
+animation = &"attack-1"
 autoplay = "idle"
-frame_progress = 0.126902
+frame_progress = 0.367892
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_021fx")
 
 [node name="Attacking_Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.6
+one_shot = true
 
 [node name="Visiable_Timer" type="Timer" parent="."]
 
+[node name="Attacking_Timer-2" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Attacking_Timer" to="." method="_on_attacking_timer_timeout"]
 [connection signal="timeout" from="Visiable_Timer" to="." method="_on_visiable_timer_timeout"]
+[connection signal="timeout" from="Attacking_Timer-2" to="." method="_on_attacking_timer_2_timeout"]
