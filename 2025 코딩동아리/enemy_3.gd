@@ -17,6 +17,12 @@ const ARROW_SPEED = 300.0
 
 @export var ArrowScene: PackedScene
 
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		
+		
 func _process(delta: float) -> void:
 	var distance = abs(Global.player_x - global_position.x)
 	var distance_y = abs(Global.player_y - global_position.y)

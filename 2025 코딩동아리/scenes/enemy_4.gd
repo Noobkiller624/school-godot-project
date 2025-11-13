@@ -15,6 +15,11 @@ var die = 0
 @export var magic_scene: PackedScene
 var player: Node2D
 
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		
 func _ready():
 	# 씬 안에서 이름이 "Player"인 노드를 찾아서 연결
 	player = get_tree().get_root().find_child("Player", true, false)

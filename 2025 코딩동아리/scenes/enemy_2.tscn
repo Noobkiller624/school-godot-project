@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cbahvydnsmxhk"]
+[gd_scene load_steps=39 format=3 uid="uid://cbahvydnsmxhk"]
 
 [ext_resource type="Script" uid="uid://dswws6fki1dgv" path="res://enemy_2.gd" id="1_fi5i3"]
 [ext_resource type="Texture2D" uid="uid://bcvrka802tg26" path="res://assets/sprites/MiniHorseMan.png" id="2_oh86k"]
@@ -265,6 +265,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_di7ta"]
 size = Vector2(18, 25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fi5i3"]
+size = Vector2(23, 13)
+
 [node name="Enemy-2" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_fi5i3")
@@ -272,8 +275,10 @@ script = ExtResource("1_fi5i3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.54688, 1.4375)
 sprite_frames = SubResource("SpriteFrames_qypmd")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
+frame = 4
+frame_progress = 0.527236
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 8.5)
@@ -282,6 +287,18 @@ shape = SubResource("RectangleShape2D_di7ta")
 [node name="Attacking_Timer" type="Timer" parent="."]
 
 [node name="Visiable_Timer" type="Timer" parent="."]
+
+[node name="PlayerDetecter" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetecter"]
+position = Vector2(11.5, 10.5)
+shape = SubResource("RectangleShape2D_fi5i3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerDetecter"]
+position = Vector2(-17, 10.5)
+shape = SubResource("RectangleShape2D_fi5i3")
 
 [connection signal="timeout" from="Attacking_Timer" to="." method="_on_attacking_timer_timeout"]
 [connection signal="timeout" from="Visiable_Timer" to="." method="_on_visiable_timer_timeout"]

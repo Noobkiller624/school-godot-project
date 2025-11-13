@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b7gjdvh8k5wow"]
+[gd_scene load_steps=26 format=3 uid="uid://b7gjdvh8k5wow"]
 
 [ext_resource type="Script" uid="uid://da0l5ksypgti2" path="res://scenes/enemy_1.gd" id="1_a1412"]
 [ext_resource type="Texture2D" uid="uid://c6i53cg720axn" path="res://assets/sprites/MiniSwordMan.png" id="1_tcmaw"]
@@ -169,6 +169,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5ap6"]
 size = Vector2(16, 17.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1412"]
+size = Vector2(10, 16)
+
 [node name="Enemy-1" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_a1412")
@@ -177,8 +180,10 @@ script = ExtResource("1_a1412")
 position = Vector2(-4.76837e-07, 0)
 scale = Vector2(1.375, 1.34375)
 sprite_frames = SubResource("SpriteFrames_4ume3")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
+frame = 2
+frame_progress = 0.692257
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11.75)
@@ -188,6 +193,18 @@ shape = SubResource("RectangleShape2D_k5ap6")
 
 [node name="Visiable_Timer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="PlayerDetecter" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetecter"]
+position = Vector2(13, 8)
+shape = SubResource("RectangleShape2D_a1412")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerDetecter"]
+position = Vector2(-13, 8)
+shape = SubResource("RectangleShape2D_a1412")
 
 [connection signal="timeout" from="Attacking_Timer" to="." method="_on_attacking_timer_timeout"]
 [connection signal="timeout" from="Visiable_Timer" to="." method="_on_visiable_timer_timeout"]
