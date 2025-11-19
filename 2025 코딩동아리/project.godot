@@ -12,7 +12,7 @@ config_version=5
 
 config/name="2025 코딩동아리"
 run/main_scene="uid://dk2usq05c1fwa"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
