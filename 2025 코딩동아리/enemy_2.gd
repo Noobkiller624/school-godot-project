@@ -135,7 +135,7 @@ func _apply_attack_hit() -> void:
 		# 실제로 Global이 프로젝트에 있으면 감소시킴
 		# (Global이 없다면 아래 줄에서 에러가 날 수 있으니, 필요한 경우 try/catch로 감싸도 됨)
 		if typeof(Global) != TYPE_NIL:
-			Global.HP -= 5
+			Global.HP -= 25
 			print(Global.HP)
 		else:
 			push_warning("Global 오토로드가 설정되어 있지 않습니다. Global.HP를 감소시킬 수 없습니다.")

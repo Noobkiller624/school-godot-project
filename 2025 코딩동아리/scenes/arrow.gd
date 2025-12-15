@@ -10,7 +10,7 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		Global.HP -= 5
+		Global.HP -= 25
 		print(Global.HP)
 		queue_free()
 	queue_free()

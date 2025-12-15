@@ -253,5 +253,8 @@ wait_time = 0.3
 
 [node name="Rolling_Again_Timer" type="Timer" parent="."]
 
+[node name="Dying_Timer" type="Timer" parent="."]
+
 [connection signal="timeout" from="Rolling_Timer" to="." method="_on_rolling_timer_timeout"]
 [connection signal="timeout" from="Rolling_Again_Timer" to="." method="_on_rolling_again_timer_timeout"]
+[connection signal="timeout" from="Dying_Timer" to="." method="_on_dying_timer_timeout"]

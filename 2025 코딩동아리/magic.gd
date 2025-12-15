@@ -11,6 +11,6 @@ func _physics_process(delta):
 	position += direction * speed * delta
 
 func _on_body_entered(body):
-	Global.HP -= 5
+	Global.HP -= 25
 	print(Global.HP)
 	queue_free()

@@ -11,6 +11,7 @@ var double_jump = 0
 
 @onready var player: CharacterBody2D = $"."
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var dying_timer: Timer = $Dying_Timer
 
 func _ready():
 	add_to_group("player")
@@ -73,6 +74,12 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.play("roll")
 
 	move_and_slide()
+	
+	if Global.HP == 0 :
+		Global.HP = -100
+		Engine.time_scale = 0.5
+		disable_all_collisions()
+		$Dying_Timer.start()
 
 # 구르기 멈추게 함
 func _on_rolling_timer_timeout() -> void:
@@ -81,3 +88,15 @@ func _on_rolling_timer_timeout() -> void:
 #다시 구를 수 있게 함
 func _on_rolling_again_timer_timeout() -> void:
 	can_rolling = true
+
+#죽음 + 재시작
+func _on_dying_timer_timeout() -> void:
+	Engine.time_scale = 1.0
+	get_tree().reload_current_scene()
+	Global.HP = 100
+	
+#죽을떄 바닥으로 가라앉기 위해서 모든 충돌 제거
+func disable_all_collisions():
+	for child in get_children():
+		if child is CollisionShape2D:
+			child.disabled = true
